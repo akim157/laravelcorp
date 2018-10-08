@@ -16,9 +16,13 @@ class SiteController extends Controller
     protected $m_rep; //сохранения логики с работай меню
     protected $template; //сохранения имя шаблона
     protected $vars = array(); //массив передаваемый данных для шаблона
-    protected $bar = false; //sitebar по умолчанию его нет.
+    protected $bar = 'no'; //sitebar по умолчанию его нет.
     protected $contentRightBar = false; //свойство для хранения информации для правого sitebar
     protected $contentLeftBar = false; //свойство для хранения информации для левого sitebar
+
+    protected $keywords;
+    protected $meta_desc;
+    protected $title;
     
     public function __construct(MenusRepository $m_rep)
     {
@@ -27,9 +31,22 @@ class SiteController extends Controller
     
     protected function renderOutput() 
     {
+        $this->vars = array_add($this->vars, 'keywords', $this->keywords);
+        $this->vars = array_add($this->vars, 'meta_desc', $this->meta_desc);
+        $this->vars = array_add($this->vars, 'title', $this->title);
+
         $menu = $this->getMenu();
         $navigation = view(env('THEME') . '.navigation')->with('menu', $menu)->render();
         $this->vars = array_add($this->vars, 'navigation', $navigation);
+        if($this->contentRightBar) {
+            $rightBar = view(env('THEME') . '.rightBar')->with('content_rightBar', $this->contentRightBar)->render();
+            $this->vars = array_add($this->vars, 'rightBar', $rightBar);
+        }
+        $this->vars = array_add($this->vars, 'bar', $this->bar);
+
+        $footer = view(env('THEME') . '.footer')->render();
+        $this->vars = array_add($this->vars, 'footer', $footer);
+
         return view($this->template)->with($this->vars);
     }
 
