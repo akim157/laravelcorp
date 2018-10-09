@@ -28,7 +28,8 @@
     <meta name="description" content="{{ (isset($meta_desc)) ? $meta_desc : '' }}" /> <!-- тернарный операторт -->
     <meta name="keywords" content="{{ (isset($keywords)) ? $keywords : '' }}" />
 
-    <title>{{ $title or 'Pink' }}</title>
+{{--    <title>{{ $title or 'Pink' }}</title>--}}
+    <title>{{ $title ? $title : 'Pink' }}</title>
 
     <!-- [favicon] begin -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset(env('THEME') . '/images/favicon.ico') }}" />
