@@ -14,6 +14,7 @@ class SiteController extends Controller
     protected $s_rep; //сохранения логики с работай слайдер
     protected $a_rep; //сохранения логики с работай статьями
     protected $m_rep; //сохранения логики с работай меню
+    protected $c_rep; //сохранения логики с работай комментариев
     protected $template; //сохранения имя шаблона
     protected $vars = array(); //массив передаваемый данных для шаблона
     protected $bar = 'no'; //sitebar по умолчанию его нет.
