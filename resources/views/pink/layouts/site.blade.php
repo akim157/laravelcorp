@@ -29,7 +29,7 @@
     <meta name="keywords" content="{{ (isset($keywords)) ? $keywords : '' }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 {{--    <title>{{ $title or 'Pink' }}</title>--}}
-    <title>{{ $title ? $title : 'Pink' }}</title>
+    <title>{{ $title ?? 'Pink' }}</title>
 
     <!-- [favicon] begin -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset(env('THEME') . '/images/favicon.ico') }}" />
