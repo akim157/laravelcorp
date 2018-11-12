@@ -24,7 +24,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
-
+        Gate::define('VIEW_ADMIN', function($user){
+//            return $user->id == $post->user_id;
+            return $user->canDo('VIEW_ADMIN'); //canDo - возвращает true если у пользователя есть соотвествующие право
+        });
         //
+        Gate::define('VIEW_ADMIN_ARTICLES', function($user){
+            return $user->canDo('VIEW_ADMIN_ARTICLES'); 
+        });
     }
 }
