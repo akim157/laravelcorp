@@ -27,9 +27,9 @@ class MenusController extends AdminController
             abort(403);
         }
 
-        $this->$m_rep = $m_rep;
-        $this->$a_rep = $a_rep;
-        $this->$p_rep = $p_rep;
+        $this->m_rep = $m_rep;
+        $this->a_rep = $a_rep;
+        $this->p_rep = $p_rep;
 
         $this->template = env('THEME').'.admin.menus';
 
