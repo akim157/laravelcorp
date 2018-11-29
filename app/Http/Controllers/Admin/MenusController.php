@@ -31,7 +31,7 @@ class MenusController extends AdminController
         $this->a_rep = $a_rep;
         $this->p_rep = $p_rep;
 
-        $this->template = env('THEME').'.admin.menus';
+        $this->template = config('settings.theme').'.admin.menus';
 
     }
 
@@ -44,7 +44,7 @@ class MenusController extends AdminController
     {
         //
         $menu = $this->getMenus();
-        $this->content = view(env('THEME').'.admin.menus_content')->with('menus', $menu)->render();
+        $this->content = view(config('settings.theme').'.admin.menus_content')->with('menus', $menu)->render();
         return $this->renderOutput();
     }
 
@@ -117,7 +117,7 @@ class MenusController extends AdminController
             return $returnPortfolios;
         },[]);
 
-        $this->content = view(env('THEME').'.admin.menus_create_content')->with(['menus' => $menus, 'articles' => $articles, 'filters' => $filters,'portfolios' => $portfolios])->render();
+        $this->content = view(config('settings.theme').'.admin.menus_create_content')->with(['menus' => $menus, 'articles' => $articles, 'filters' => $filters,'portfolios' => $portfolios])->render();
 
         return $this->renderOutput();
     }
@@ -229,7 +229,7 @@ class MenusController extends AdminController
             return $returnPortfolios;
         },[]);
 
-        $this->content = view(env('THEME').'.admin.menus_create_content')->with(['menu' => $menu, 'type' => $type, 'option' => $option, 'menus' => $menus, 'articles' => $articles, 'filters' => $filters,'portfolios' => $portfolios])->render();
+        $this->content = view(config('settings.theme').'.admin.menus_create_content')->with(['menu' => $menu, 'type' => $type, 'option' => $option, 'menus' => $menus, 'articles' => $articles, 'filters' => $filters,'portfolios' => $portfolios])->render();
 
         return $this->renderOutput();
     }

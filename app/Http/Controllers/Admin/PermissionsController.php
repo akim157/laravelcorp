@@ -26,7 +26,7 @@ class PermissionsController extends AdminController
         $this->per_rep = $per_rep;
         $this->rol_rep = $rol_rep;
         
-        $this->template = env('THEME').'.admin.permissions';
+        $this->template = config('settings.theme').'.admin.permissions';
     }
     /**
      * Display a listing of the resource.
@@ -42,7 +42,7 @@ class PermissionsController extends AdminController
         $roles = $this->getRoles(); //роли
         $permissions = $this->getPermissions(); //привилегии
 
-        $this->content = view(env('THEME').'.admin.permissions_content')->with(['roles' => $roles, 'priv' => $permissions])->render();
+        $this->content = view(config('settings.theme').'.admin.permissions_content')->with(['roles' => $roles, 'priv' => $permissions])->render();
 
         return $this->renderOutput();
     }

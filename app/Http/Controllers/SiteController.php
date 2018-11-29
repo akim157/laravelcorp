@@ -37,19 +37,19 @@ class SiteController extends Controller
         $this->vars = array_add($this->vars, 'title', $this->title);
 
         $menu = $this->getMenu();
-        $navigation = view(env('THEME') . '.navigation')->with('menu', $menu)->render();
+        $navigation = view(config('settings.theme') . '.navigation')->with('menu', $menu)->render();
         $this->vars = array_add($this->vars, 'navigation', $navigation);
         if($this->contentRightBar) {
-            $rightBar = view(env('THEME') . '.rightBar')->with('content_rightBar', $this->contentRightBar)->render();
+            $rightBar = view(config('settings.theme') . '.rightBar')->with('content_rightBar', $this->contentRightBar)->render();
             $this->vars = array_add($this->vars, 'rightBar', $rightBar);
         }
         if($this->contentLeftBar) {
-            $leftBar = view(env('THEME') . '.leftBar')->with('content_leftBar', $this->contentLeftBar)->render();
+            $leftBar = view(config('settings.theme') . '.leftBar')->with('content_leftBar', $this->contentLeftBar)->render();
             $this->vars = array_add($this->vars, 'leftBar', $leftBar);
         }
         $this->vars = array_add($this->vars, 'bar', $this->bar);
 
-        $footer = view(env('THEME') . '.footer')->render();
+        $footer = view(config('settings.theme') . '.footer')->render();
         $this->vars = array_add($this->vars, 'footer', $footer);
 
         return view($this->template)->with($this->vars);
